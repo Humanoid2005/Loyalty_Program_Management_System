@@ -63,21 +63,21 @@ A comprehensive web-based platform for managing college event participation and 
 
 #### Class Diagrams
 
-[Class Diagrams](./diagrams/class_diagram.jpeg)
+![Class Diagrams](./diagrams/class_diagram.jpeg)
 
 #### Use Case Diagram
 
-[Use Case Diagram](./diagrams/use_case_diagram.jpeg)
+![Use Case Diagram](./diagrams/use_case_diagram.jpeg)
 
 #### Sequence Diagram
 
 **Authentication and event creation flow**
 
-[Sequence Diagram](./diagrams/sequence_diagram1.jpeg)
+![Sequence Diagram](./diagrams/sequence_diagram1.jpeg)
 
 **Team management and attendance flow**
 
-[Sequence Diagram](./diagrams/sequence_diagram2.jpeg)
+![Sequence Diagram](./diagrams/sequence_diagram2.jpeg)
 
 ---
 
@@ -87,7 +87,7 @@ A comprehensive web-based platform for managing college event participation and 
 
 The application follows a traditional **3-tier client-server architecture**:
 
-[Architecture Diagram](./diagrams/architecture_diagram.jpeg)
+![Architecture Diagram](./diagrams/architecture_diagram.jpeg)
 
 ### Frontend Architecture
 
