@@ -403,9 +403,11 @@ git clone https://github.com/Humanoid2005/Loyalty_Program_Management_System.git
 cd Loyalty_Program_Management_System
 ```
 
+**Fill in the values for the environment variables in frontend and backend by following the .env.example present in both client, server folders**
+
 ### 2. Backend Setup
 
-#### Step 1: Navigate to server directory
+####  Navigate to server directory
 
 ```bash
 cd server
