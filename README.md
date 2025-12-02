@@ -59,43 +59,35 @@ A comprehensive web-based platform for managing college event participation and 
 
 ---
 
+## UML Diagrams
+
+#### Class Diagrams
+
+[Class Diagrams](./diagrams/class_diagram.jpeg)
+
+#### Use Case Diagram
+
+[Use Case Diagram](./diagrams/use_case_diagram.jpeg)
+
+#### Sequence Diagram
+
+**Authentication and event creation flow**
+
+[Sequence Diagram](./diagrams/sequence_diagram1.jpeg)
+
+**Team management and attendance flow**
+
+[Sequence Diagram](./diagrams/sequence_diagram2.jpeg)
+
+---
+
 ## Architecture Design
-
-### Diagrams
-
-All architecture diagrams are available in the `/diagrams` folder:
-
-1. **architecture_diagram.jpeg** - Overall system architecture
-2. **class_diagram.jpeg** - Class relationships and structure
-3. **use_case_diagram.jpeg** - User interactions and use cases
-4. **sequence_diagram1.jpeg** - Authentication and event creation flow
-5. **sequence_diagram2.jpeg** - Team management and attendance flow
 
 ### Client-Server Architecture
 
 The application follows a traditional **3-tier client-server architecture**:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Client Layer (React)                 │
-│  - UI Components (Admin/Volunteer/Participant portals)  │
-│  - State Management (Custom Hooks)                      │
-│  - API Service Layer                                    │
-└────────────────────┬────────────────────────────────────┘
-                     │ HTTPS/REST API
-┌────────────────────▼────────────────────────────────────┐
-│              Application Layer (FastAPI)                │
-│  - Authentication & Authorization                       │
-│  - Business Logic (Routes)                              │
-│  - Data Validation (Pydantic)                           │
-└────────────────────┬────────────────────────────────────┘
-                     │ Motor (Async Driver)
-┌────────────────────▼────────────────────────────────────┐
-│              Data Layer (MongoDB Atlas)                 │
-│  - Collections: users, events, teams, volunteers        │
-│  - Indexes and Queries                                  │
-└─────────────────────────────────────────────────────────┘
-```
+[Architecture Diagram](./diagrams/architecture_diagram.jpeg)
 
 ### Frontend Architecture
 
