@@ -5,10 +5,9 @@ config = Config(".env")
 CLIENT_ID = config("CLIENT_ID")
 CLIENT_SECRET = config("CLIENT_SECRET")
 TENANT_ID = config("TENANT_ID")
-SESSION_SECRET_KEY= config("SESSION_SECRET_KEY")
+SESSION_SECRET_KEY = config("SESSION_SECRET_KEY")
 
 ADMIN_EMAIL = config("ADMIN_EMAIL", default="synergy@iiitb.ac.in")
-REDIS_URL = config("REDIS_URL", default="redis://localhost:6379")
 FRONTEND_URL = config("FRONTEND_URL", default="http://localhost:5173")
 BACKEND_URL = config("BACKEND_URL", default="http://localhost:8000")
 

@@ -4,7 +4,10 @@ python-dotenv
 authlib
 httpx
 starlette-session
-redis
 motor
 python-jose
 cryptography
+pytest
+pytest-asyncio
+pytest-cov
+pytest-mock
