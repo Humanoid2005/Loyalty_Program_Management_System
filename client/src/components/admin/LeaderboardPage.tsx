@@ -18,6 +18,11 @@ const LeaderboardPage = () => {
     fetchFullLeaderboard();
   }, [fetchFullLeaderboard]);
 
+  // Debug: Log the data
+  useEffect(() => {
+    console.log('Leaderboard data:', { leaderboard, teams, loading, error });
+  }, [leaderboard, teams, loading, error]);
+
   // Helper functions for styling
   const getCardStyle = (rank: number) => {
     switch (rank) {
@@ -131,7 +136,7 @@ const LeaderboardPage = () => {
           </p>
           <div className="flex items-center justify-center gap-2 text-purple-400">
             <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="text-xs sm:text-sm font-semibold tracking-wide">TOP {teams.length} TEAMS</span>
+            <span className="text-xs sm:text-sm font-semibold tracking-wide">{teams.length > 0 ? `${teams.length} TEAMS` : 'LOADING...'}</span>
             <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
           </div>
           
@@ -147,10 +152,10 @@ const LeaderboardPage = () => {
         </div>
 
         {/* Top 3 Podium - Special Display */}
-        {teams.length >= 3 && (
+        {teams.length > 0 && (
           <div className="max-w-5xl mx-auto mb-8">
             <div className="text-center mb-6 sm:mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">Top 10 Teams</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">Team Rankings</h2>
               <div className="h-1 w-24 sm:w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full"></div>
             </div>
             

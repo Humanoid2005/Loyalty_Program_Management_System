@@ -1,6 +1,6 @@
 import {User} from "../models/User";
 import { useState,useEffect } from "react";
-import { fetchUser } from "../service/api";
+import { fetchUser, logout as apiLogout } from "../service/api";
 
 const useAuth = () => {
     const [user, setUser] = useState<User | null>(null);
@@ -22,7 +22,19 @@ const useAuth = () => {
         return () => { mounted = false; };
     }, []);
 
-    return { user, loading};
+    const logout = async () => {
+        try {
+            await apiLogout();
+            setUser(null);
+            window.location.href = '/';
+        } catch (error) {
+            console.error('Logout failed:', error);
+            // Force redirect even if API call fails
+            window.location.href = '/';
+        }
+    };
+
+    return { user, loading, logout };
 }
 
 export default useAuth;

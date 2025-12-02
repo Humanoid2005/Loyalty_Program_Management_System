@@ -102,7 +102,6 @@ const ParticipantPortal: React.FC = () => {
               <ProfileDropdown
                 user={user}
                 team={team}
-                onLogout={() => navigate("/")}
               />
             )}
 

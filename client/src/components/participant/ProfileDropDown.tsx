@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { User, LogOut, Users, Trophy, ChevronDown, Mail } from "lucide-react";
 import type { Team } from "../../models/Team";
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
+import { logout as apiLogout } from "../../service/api";
 
 interface UserProfile {
   name: string;
@@ -14,10 +13,9 @@ interface UserProfile {
 interface ProfileDropdownProps {
   user: UserProfile;
   team?: Team | null;
-  onLogout: () => void;
 }
 
-const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ user, team, onLogout }) => {
+const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ user, team }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -45,9 +43,16 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ user, team, onLogout 
 
   const getRoleLabel = (role: string) => role.charAt(0).toUpperCase() + role.slice(1);
 
-  const handleLogoutClick = () => {
-    setLoggingOut(true);
-    window.location.href = `${BACKEND_URL}/api/logout`;
+  const handleLogoutClick = async () => {
+    try {
+      setLoggingOut(true);
+      await apiLogout();
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Logout failed:', error);
+      // Force redirect even if API call fails
+      window.location.href = '/';
+    }
   };
 
 return (

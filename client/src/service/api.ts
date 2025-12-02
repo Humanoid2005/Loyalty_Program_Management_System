@@ -30,7 +30,7 @@ export async function fetchUser(): Promise<User | null> {
 }
 
 export async function logout(): Promise<void> {
-    await api_service.makeRequest('/auth/logout', { method: 'GET' });
+    await api_service.makeRequest('/api/logout', { method: 'GET' });
 }
 
 export async function getEvents(): Promise<{ events: Event[] }> {
@@ -109,7 +109,7 @@ export async function deleteEvent(eventId: string): Promise<{ message: string }>
 
 // Volunteer endpoints
 export async function getVolunteers(): Promise<{ volunteers: Volunteer[] }> {
-  return api_service.makeRequest('/api/volunteers');
+  return api_service.makeRequest('/api/volunteer');
 }
 
 export async function addVolunteer(volunteerData: {
@@ -117,20 +117,20 @@ export async function addVolunteer(volunteerData: {
   name: string;
   email: string;
 }): Promise<{ message: string; volunteer: Volunteer }> {
-  return api_service.makeRequest('/api/volunteers', {
+  return api_service.makeRequest('/api/volunteer', {
     method: 'POST',
     body: JSON.stringify(volunteerData),
   });
 }
 
 export async function removeVolunteer(rollNumber: string): Promise<{ message: string }> {
-  return api_service.makeRequest(`/api/volunteers/${rollNumber}`, {
+  return api_service.makeRequest(`/api/volunteer/${rollNumber}`, {
     method: 'DELETE',
   });
 }
 
 export async function getVolunteer(rollNumber: string): Promise<{ volunteer: Volunteer }> {
-  return api_service.makeRequest(`/api/volunteers/${rollNumber}`);
+  return api_service.makeRequest(`/api/volunteer/${rollNumber}`);
 }
 
 export async function getLeaderboard(): Promise<{ volunteers: Volunteer[] }> {

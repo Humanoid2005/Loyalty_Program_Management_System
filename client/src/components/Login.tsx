@@ -3,7 +3,7 @@ import { BACKEND_URL, EVENT_NAME, EVENT_YEAR, BACK_LINK } from '../config/config
 
 const Login: React.FC = () => {
   const handleLogin = () => {
-    window.location.href = `${BACKEND_URL}/auth/login`;
+    window.location.href = `${BACKEND_URL}/api/login`;
   };
 
   const handleBackToFestLink = () => {
@@ -50,7 +50,7 @@ const Login: React.FC = () => {
           {/* Logos Section */}
           <div className="flex items-center justify-center gap-8 mb-8">
             <img 
-              src="/images/iiitb-logo.png" 
+              src="/images/organisation-logo.png" 
               alt="IIITB Logo"
               className="h-16 sm:h-20 w-auto object-contain drop-shadow-[0_0_20px_rgba(100,200,255,0.4)] hover:drop-shadow-[0_0_30px_rgba(100,200,255,0.6)] transition-all duration-300"
             />

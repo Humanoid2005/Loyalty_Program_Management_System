@@ -1,13 +1,12 @@
 import React from 'react';
 import AdminDashboard from '../components/admin/AdminDashboard';
 import useAuth from '../hooks/useAuth';
-import { BACKEND_URL } from '../config/config';
 
 const AdminPage: React.FC = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
-  const handleLogout = () => {
-    window.location.href = `${BACKEND_URL}/auth/logout`;
+  const handleLogout = async () => {
+    await logout();
   };
 
   if (!user) {
