@@ -385,6 +385,8 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 ```
 
+![Test Results](./diagrams/test_results.png)
+
 ## How to Run Locally
 
 ### Prerequisites
