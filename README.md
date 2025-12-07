@@ -1,8 +1,25 @@
 # Loyalty Program Management Website
 
+## CSE303P Software Engineering Lab Project
+## Team Name: DeLeetcode
+## Team Members: 
+- Gourav Anirudh B J (IMT2023005)
+- Sathish Adithiyaa S V (IMT2023030)
+- Sahil Kolte (IMT2023066)
+- Sriram Srikanth (IMT2023115)
+
+## About the project
+
 A comprehensive web-based platform for managing college event participation and tracking loyalty points. The system enables administrators to create events, volunteers to mark attendance, and participants to join teams and compete on a leaderboard.
 
 ---
+
+## Software Development Lifecycle phases:
+- **Requirements Analysis:** We listed down all the requirements in SRS, adding the function and non-functional requirements, UML diagrams.
+- **Design Phase:** We designed the low level and high level architecture of the project using architecture diagrams and planned possible design patterns which can be used.
+- **Implementation Phase:** We implemented the project which follows a three tier client-server-database architecture, by implementing the frontend in ReactJS + Typescript, backend in FAST API (Python) and using MongoDB as the data store. 
+- **Testing Phase:** The frontend was testing visually by clicking and testing all features for functionality, responsivness and UI completeness, the backend was tested using pytest which enabled us to test the backend API endpoint functionalities.
+
 
 ## Roles and Features
 
