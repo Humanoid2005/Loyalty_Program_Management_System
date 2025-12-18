@@ -24,7 +24,7 @@ A comprehensive web-based platform for managing college event participation and 
 ## Roles and Features
 
 ### Admin
-- **Event Management**: Create, update, and delete events with custom points and secret codes
+- **Event Management**: Create, update, and delete events with custom points and secret codes.
 - **Volunteer Management**: Add or remove volunteers who can mark attendance
 - **Dashboard**: View comprehensive statistics including total events, participants, and leaderboard
 - **Event Control**: Mark events as expired to prevent further participation
