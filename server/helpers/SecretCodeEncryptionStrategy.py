@@ -29,6 +29,11 @@ class SecretCodeEncryptionStrategy:
         if not encrypted_text:
             return ""
         try:
+            # Add padding if missing (frontend removes padding)
+            padding = len(encrypted_text) % 4
+            if padding:
+                encrypted_text += '=' * (4 - padding)
+            
             combined = base64.urlsafe_b64decode(encrypted_text.encode("utf-8"))
             iv = combined[:12]
             ciphertext = combined[12:]
