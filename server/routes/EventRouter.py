@@ -35,7 +35,7 @@ class EventCreate(BaseModel):
 
 class EventUpdate(BaseModel):
     event_name: Optional[str] = None
-    secret_code: str
+    secret_code: Optional[str] = None
     points: Optional[int] = None
     expired: Optional[bool] = None
 
@@ -44,12 +44,18 @@ class EventUpdate(BaseModel):
 async def create_event(request: Request, event_data: EventCreate, admin_user: dict = Depends(require_admin), db = Depends(get_db)):
     """Create a new event (Admin only)"""
     try:
+        # Decrypt the incoming secret code
+        try:
+            decrypted_secret = decrypt_secret_code(event_data.secret_code)
+        except Exception as e:
+            raise HTTPException(status_code=422, detail=f"Unable to decrypt secret code: {str(e)}")
+        
         event_id = str(uuid.uuid4())
         event = {
             "event_id": event_id,
             "event_name": event_data.event_name,
             "points": event_data.points,
-            "secret_code": event_data.secret_code,
+            "secret_code": decrypted_secret,
             "expired": False,
             "participants": 0,
         }
@@ -57,7 +63,7 @@ async def create_event(request: Request, event_data: EventCreate, admin_user: di
         result = await db.add("events", event)
         if result["status"] == 200:
             event = result["data"]
-            event["secret_code"] = event.get("secret_code", "")
+            event["secret_code"] = encrypt_secret_code(event.get("secret_code", ""))
             return JSONResponse(content={"message": "Event created successfully", "event": event})
         else:
             raise HTTPException(status_code=500, detail="Failed to create event")
@@ -110,11 +116,11 @@ async def update_event(event_id: str, event_data: EventUpdate, request: Request,
         if event_data.expired is not None:
             update_data["expired"] = event_data.expired
         if event_data.secret_code is not None:
-            decrypted_code = decrypt_secret_code(event_data.secret_code)
-            if (decrypted_code is not None):
+            try:
+                decrypted_code = decrypt_secret_code(event_data.secret_code)
                 update_data["secret_code"] = decrypted_code
-            else:
-                raise HTTPException(status=422, detail="Unable to decrypt secret code from user request")
+            except Exception as e:
+                raise HTTPException(status_code=422, detail=f"Unable to decrypt secret code: {str(e)}")
 
         if not update_data:
             raise HTTPException(status_code=400, detail="No fields to update")
